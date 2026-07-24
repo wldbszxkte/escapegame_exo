@@ -672,6 +672,29 @@ button {
    10. Media Queries (Responsive)
    ========================================== */
 @media (max-width: 600px) {
+   .sector-card {
+    padding: 14px 12px 36px !important; /* 아래쪽에 ENTER 문구 들어갈 공간 확보 */
+    min-height: 130px !important;
+  }
+
+  .sector-card b {
+    font-size: 13px !important;
+    word-break: keep-all; /* 단어 단위 줄바꿈으로 깔끔하게 정렬 */
+    padding-right: 20px; /* 오른쪽 상단 LOCKED 아이콘과 겹침 방지 */
+  }
+
+  .sector-card small {
+    font-size: 9px !important;
+    line-height: 1.3;
+  }
+
+  /* ENTER → / LOCKED 문구 위치 정돈 */
+  .sector-card.active::after,
+  .sector-card.locked::after {
+    right: 10px !important;
+    bottom: 10px !important;
+    font-size: 9px !important;
+  }
   .hud {
     height: 75px;
   }
