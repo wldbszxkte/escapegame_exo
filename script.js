@@ -571,6 +571,9 @@ async function clear() {
   roomState.inGame = false;
   renderInventory();
 
+  // 다음 방 연결 문구 (데이터에 등록해둔 문구를 불러오거나 기본값 적용)
+  const nextStoryText = r.nextStory || "차원의 기운이 정화되며 다음 섹터의 봉인이 해제됩니다.";
+
   screen.innerHTML = `
     <section class="view success">
       <div class="success-icon" style="filter:drop-shadow(0 0 15px ${r.color});">${r.icon}</div>
@@ -582,12 +585,19 @@ async function clear() {
         <b style="font-size:18px; color:#fff;">[ ${r.orb} ]</b>
       </div>
 
+      <!-- 📜 [신규] 다음 방 연결 문구 카드 -->
+      <div style="margin: 15px 0 25px; padding: 14px 18px; background: rgba(var(--room-rgb), 0.12); border-left: 3px solid var(--room); text-align: left; max-width: 500px;">
+        <span style="font-size: 10px; color: var(--room); font-family: Orbitron; font-weight: 700; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">SEQUENTIAL NARRATIVE</span>
+        <p style="margin: 0; color: #d0d4df; font-size: 13px; line-height: 1.6; word-break: keep-all;">
+          "${nextStoryText}"
+        </p>
+      </div>
+
       <p>에너지 서명 <b>${r.code}</b>가 성공적으로 전송되었습니다.</p>
       <div class="code-reveal">CODE ${r.code}</div>
       <button class="primary-button" onclick="next()">${room === 5 ? '메인 게이트로' : '다음 방으로'} <span>→</span></button>
     </section>`;
 }
-
 function launchOrbToHud(roomData, roomIndex) {
   const target = document.querySelector(`.hud-orb[data-room-index="${roomIndex}"]`) || document.querySelector('.code-panel');
   const source = document.querySelector('.room-scene') || screen;
