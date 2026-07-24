@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RED FORCE : THE ECLIPSE</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <main class="game-shell">
+      <header class="hud">
+        <a
+          class="logo"
+          href="#"
+          aria-label="처음으로"
+          onclick="restartGame(); return false;"
+        >
+          <span>RED FORCE</span>
+          <b>THE ECLIPSE</b>
+        </a>
+
+        <div class="code-panel">
+          <span>ESCAPE CODE</span>
+          <div
+            id="codeSlots"
+            class="code-slots"
+            aria-label="수집한 탈출 코드"
+          ></div>
+        </div>
+      </header>
+
+      <section id="screen" class="screen" aria-live="polite"></section>
+      <div id="inventoryPanel" class="inventory-panel hidden">
+        <div class="inventory-label">EQUIPMENT INVENTORY</div>
+        <div id="inventorySlots" class="inventory-slots">
+          <div class="inventory-slot" data-index="0"></div>
+          <div class="inventory-slot" data-index="1"></div>
+          <div class="inventory-slot" data-index="2"></div>
+          <div class="inventory-slot" data-index="3"></div>
+        </div>
+      </div>
+    </main>
+
+    <template id="introTemplate">
+      <div class="intro view">
+        <div class="eclipse"><i></i></div>
+
+        <p class="eyebrow">EMERGENCY TRANSMISSION // 06:00:00</p>
+
+        <h1>
+          RED FORCE<br />
+          <em>THE ECLIPSE</em>
+        </h1>
+
+        <p class="intro-copy">
+          개기일식과 함께 붉은 기운이 아지트의 6개 에너지 구역을 봉인했습니다.<br />
+          각 구역을 복구해 탈출 코드를 완성하세요.
+        </p>
+
+        <button class="primary-button" onclick="startGame()">
+          게임을 시작하시겠습니까? <span>→</span>
+        </button>
+      </div>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

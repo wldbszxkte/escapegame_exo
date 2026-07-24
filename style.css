@@ -1,0 +1,903 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Orbitron:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+/* ==========================================
+   1. Root Variables & Reset
+   ========================================== */
+:root {
+  --room: #e33b3b;
+  --room-rgb: 227, 59, 59;
+  --ink: #e9ebf1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--ink);
+  background: #050508;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ==========================================
+   2. Layout & Game Shell
+   ========================================== */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+}
+
+.game-shell {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 110%, rgba(var(--room-rgb), 0.16), transparent 45%),
+              linear-gradient(135deg, #08090f, #020204 70%);
+  transition: background 0.8s;
+}
+
+.game-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background: linear-gradient(90deg, transparent 49.8%, rgba(255, 255, 255, 0.14) 50%, transparent 50.2%),
+              linear-gradient(0deg, transparent 49.8%, rgba(255, 255, 255, 0.08) 50%, transparent 50.2%);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 76%);
+}
+
+/* ==========================================
+   3. HUD & Top Panel
+   ========================================== */
+.hud {
+  width: min(1120px, 92%);
+  height: 92px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.logo {
+  color: #fff;
+  text-decoration: none;
+  line-height: 1;
+  font-family: Orbitron, sans-serif;
+  letter-spacing: 0.09em;
+  font-size: 10px;
+}
+
+.logo span {
+  display: block;
+  color: #ff4b4b;
+  font-weight: 900;
+  font-size: 17px;
+}
+
+.logo b {
+  font-weight: 500;
+}
+
+.code-panel {
+  text-align: right;
+  font: 700 9px Orbitron, sans-serif;
+  letter-spacing: 0.13em;
+  color: #858997;
+}
+
+.code-slots {
+  display: flex;
+  gap: 6px;
+  margin-top: 7px;
+  justify-content: flex-end;
+}
+
+.code-slot {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 29px;
+  border: 1px solid #424652;
+  color: #fff;
+  font: 700 14px Orbitron, sans-serif;
+}
+
+.code-slot.filled {
+  border-color: var(--room);
+  color: var(--room);
+  box-shadow: 0 0 12px rgba(var(--room-rgb), 0.5);
+}
+
+/* ==========================================
+   4. Screens & Common Views
+   ========================================== */
+.screen {
+  min-height: calc(100vh - 92px);
+  width: min(1120px, 92%);
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 90px;
+}
+
+.view {
+  min-height: calc(100vh - 92px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Intro Screen */
+.intro h1 {
+  margin: 20px 0 15px;
+  font: 900 clamp(38px, 7vw, 82px) / 0.94 Orbitron, sans-serif;
+  letter-spacing: 0.06em;
+}
+
+.intro h1 em {
+  color: #e63b3b;
+  font-style: normal;
+  text-shadow: 0 0 24px #9e1919;
+}
+
+.eyebrow,
+.sector {
+  margin: 0;
+  color: var(--room);
+  font: 700 10px Orbitron, sans-serif;
+  letter-spacing: 0.18em;
+}
+
+.intro-copy {
+  color: #acb0bd;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.eclipse {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: #030305;
+  box-shadow: 0 0 0 4px #8c1717,
+              0 0 25px 10px #591010,
+              0 0 80px 24px #280707;
+  position: relative;
+}
+
+.eclipse i {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #050508;
+  right: 4px;
+  top: 0;
+}
+
+/* ==========================================
+   5. Buttons & Interactivity
+   ========================================== */
+.primary-button,
+.choice-button,
+.portal,
+.rune {
+  border: 1px solid var(--room);
+  color: #fff;
+  background: rgba(var(--room-rgb), 0.11);
+  transition: 0.2s;
+}
+
+.primary-button {
+  margin-top: 25px;
+  padding: 14px 21px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+.primary-button span {
+  color: var(--room);
+  margin-left: 12px;
+  font-size: 18px;
+}
+
+.primary-button:hover,
+.choice-button:hover,
+.portal:hover,
+.rune:hover {
+  transform: translateY(-2px);
+  background: var(--room);
+  color: #07070a;
+  box-shadow: 0 0 25px rgba(var(--room-rgb), 0.45);
+}
+
+/* ==========================================
+   6. Room & Story Elements
+   ========================================== */
+.room {
+  padding: 35px 0 42px;
+}
+
+.room-heading {
+  text-align: center;
+}
+
+.room-heading h2 {
+  margin: 8px 0 2px;
+  font: 700 clamp(31px, 5vw, 52px) "Black Han Sans", sans-serif;
+  text-shadow: 0 0 24px rgba(var(--room-rgb), 0.35);
+}
+
+.room-heading .member {
+  margin: 0;
+  color: var(--room);
+  font: 700 13px Orbitron, sans-serif;
+  letter-spacing: 0.14em;
+}
+
+.story {
+  max-width: 620px;
+  margin: 23px auto 30px;
+  color: #aeb3bf;
+  text-align: center;
+  line-height: 1.75;
+  font-size: 14px;
+}
+
+/* ==========================================
+   7. Puzzles & Answers
+   ========================================== */
+.puzzle {
+  max-width: 720px;
+  margin: auto;
+  padding: 25px;
+  border: 1px solid rgba(var(--room-rgb), 0.34);
+  background: linear-gradient(135deg, rgba(var(--room-rgb), 0.13), rgba(255, 255, 255, 0.025));
+  box-shadow: inset 0 0 35px rgba(var(--room-rgb), 0.04), 0 18px 55px rgba(0, 0, 0, 0.3);
+}
+
+.puzzle h3 {
+  margin: 0 0 8px;
+  font: 700 15px Orbitron, sans-serif;
+  letter-spacing: 0.07em;
+}
+
+.puzzle-guide {
+  color: #aeb3bf;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.status {
+  min-height: 23px;
+  margin: 15px 0 0;
+  color: #ff7272;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.status.good {
+  color: #8fffc3;
+}
+
+/* ==========================================
+   8. Room Scene & Interactive Objects
+   ========================================== */
+.room-scene {
+  position: relative;
+  min-height: 320px;
+  margin: 20px 0 14px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--room-rgb), 0.55);
+  background: linear-gradient(165deg, rgba(var(--room-rgb), 0.16), transparent 42%),
+              linear-gradient(90deg, #10131b 0 8%, #262b35 8% 92%, #10131b 92%);
+  box-shadow: inset 0 24px 35px rgba(0, 0, 0, 0.52),
+              inset 0 -42px 24px rgba(0, 0, 0, 0.44);
+}
+
+.room-scene::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 72px;
+  background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0 2px, transparent 2px 72px),
+              linear-gradient(#2a303a, #10131b);
+  transform: perspective(230px) rotateX(45deg);
+  transform-origin: bottom;
+}
+
+.room-scene::after {
+  content: "SECTOR SURVEILLANCE // ECLIPSE PROTOCOL";
+  position: absolute;
+  left: 13px;
+  top: 11px;
+  color: rgba(255, 255, 255, 0.36);
+  font: 8px Orbitron, sans-serif;
+  letter-spacing: 0.13em;
+}
+
+.scene-object {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(var(--room-rgb), 0.62);
+  background: rgba(6, 8, 13, 0.85);
+  color: #e7ebf2;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 11px;
+  transition: 0.2s;
+}
+
+.scene-object:hover,
+.scene-object.done {
+  border-color: var(--room);
+  box-shadow: 0 0 18px rgba(var(--room-rgb), 0.6),
+              inset 0 0 18px rgba(var(--room-rgb), 0.2);
+}
+
+.scene-object b {
+  display: block;
+  color: var(--room);
+  font: 700 10px Orbitron, sans-serif;
+  margin-bottom: 2px;
+}
+
+.pipe {
+  position: absolute;
+  z-index: 0;
+  height: 22px;
+  border: 5px solid rgba(var(--room-rgb), 0.45);
+  border-left: 0;
+  border-radius: 0 18px 18px 0;
+}
+
+.easter {
+  position: absolute;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.18);
+  font-size: 10px;
+  cursor: help;
+}
+
+.easter:hover {
+  color: var(--room);
+  text-shadow: 0 0 9px var(--room);
+}
+
+.scene-status {
+  position: absolute;
+  z-index: 1;
+  right: 14px;
+  bottom: 11px;
+  color: var(--room);
+  font: 700 9px Orbitron, sans-serif;
+  letter-spacing: 0.11em;
+}
+
+/* 🎒 INVENTORY SYSTEM STYLES (추가됨) */
+.inventory-panel {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: rgba(8, 9, 14, 0.95);
+  border: 1px solid var(--room);
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.85);
+  text-align: center;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.inventory-panel.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+}
+
+.inventory-label {
+  margin: 0 0 6px 0;
+  font: 700 9px Orbitron, sans-serif;
+  color: var(--room);
+  letter-spacing: 0.15em;
+}
+
+.inventory-slots {
+  display: flex;
+  gap: 10px;
+}
+
+.inventory-slot {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #383c48;
+  background: #050609;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.inventory-slot:hover {
+  border-color: #888;
+}
+
+.inventory-slot.selected {
+  border-color: #fff;
+  box-shadow: 0 0 15px var(--room);
+  background: rgba(var(--room-rgb), 0.25);
+  transform: scale(1.06);
+}
+
+.symbol-row, .portal-grid, .lever-row, .shard-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.symbol-button, .portal, .lever, .shard {
+  padding: 10px 14px;
+  border: 1px solid var(--room);
+  background: rgba(var(--room-rgb), 0.15);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ==========================================
+   9. Game Results & Ending Sections
+   ========================================== */
+.success {
+  text-align: center;
+}
+
+.success .success-icon {
+  font-size: 64px;
+  color: var(--room);
+  text-shadow: 0 0 30px var(--room);
+}
+
+.success h2,
+.final h2 {
+  font: 700 clamp(29px, 5vw, 48px) "Black Han Sans", sans-serif;
+  margin: 15px 0 10px;
+}
+
+.success p,
+.final p {
+  color: #b3b7c1;
+  line-height: 1.8;
+}
+
+.code-reveal {
+  margin: 21px 0;
+  color: var(--room);
+  font: 900 44px Orbitron, sans-serif;
+  text-shadow: 0 0 22px rgba(var(--room-rgb), 0.7);
+}
+
+.final-code {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.final-code input {
+  width: 46px;
+  height: 54px;
+  outline: none;
+  border: 1px solid #555b69;
+  background: #08090e;
+  color: #fff;
+  text-align: center;
+  font: 700 22px Orbitron, sans-serif;
+}
+
+.final-code input:focus {
+  border-color: #e33b3b;
+}
+
+.gate {
+  font-size: 74px;
+  margin: 5px;
+  filter: drop-shadow(0 0 18px #e33b3b);
+}
+
+/* Briefing Document */
+.briefing {
+  padding: 35px 0;
+}
+
+.document {
+  width: min(760px, 100%);
+  padding: clamp(25px, 6vw, 58px);
+  border: 1px solid rgba(227, 59, 59, 0.45);
+  background: linear-gradient(135deg, rgba(91, 12, 12, 0.34), rgba(6, 6, 10, 0.94));
+  box-shadow: 0 0 60px rgba(190, 30, 30, 0.14);
+  text-align: left;
+  position: relative;
+}
+
+.document::before {
+  content: 'CLASSIFIED';
+  position: absolute;
+  top: 23px;
+  right: 25px;
+  color: #ff4b4b;
+  font: 900 11px Orbitron, sans-serif;
+  letter-spacing: 0.15em;
+  border: 1px solid #ff4b4b;
+  padding: 6px;
+  transform: rotate(4deg);
+}
+
+.document h2 {
+  margin: 11px 0 25px;
+  font: 700 clamp(26px, 4vw, 39px) "Black Han Sans", sans-serif;
+}
+
+.document p {
+  color: #c2c5cd;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.document hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  margin: 23px 0;
+}
+
+.document .primary-button {
+  float: right;
+  margin-top: 8px;
+}
+
+/* Sector Hub */
+.hub {
+  padding: 48px 0;
+}
+
+.hub-title {
+  text-align: center;
+}
+
+.hub-title h2 {
+  margin: 8px 0;
+  font: 700 clamp(31px, 5vw, 50px) "Black Han Sans", sans-serif;
+}
+
+.hub-copy {
+  color: #afb4c0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sector-map {
+  max-width: 790px;
+  margin: 38px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+}
+
+.sector-card {
+  min-height: 135px;
+  padding: 18px;
+  border: 1px solid #30343d;
+  background: rgba(255, 255, 255, 0.025);
+  color: #707582;
+  text-align: left;
+  position: relative;
+}
+
+.sector-card .card-icon {
+  font-size: 30px;
+}
+
+.sector-card b {
+  display: block;
+  margin-top: 9px;
+  font-size: 14px;
+}
+
+.sector-card small {
+  display: block;
+  margin-top: 4px;
+  font: 10px Orbitron, sans-serif;
+}
+
+.sector-card.locked::after {
+  content: 'LOCKED';
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  color: #747986;
+  font: 700 9px Orbitron, sans-serif;
+}
+
+.sector-card.active {
+  border-color: var(--room);
+  color: #fff;
+  background: linear-gradient(135deg, rgba(var(--room-rgb), 0.22), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 0 24px rgba(var(--room-rgb), 0.18);
+  cursor: pointer;
+}
+
+.sector-card.active::after {
+  content: 'ENTER →';
+  position: absolute;
+  bottom: 16px;
+  right: 14px;
+  color: var(--room);
+  font: 700 10px Orbitron, sans-serif;
+}
+
+/* ==========================================
+   10. Media Queries (Responsive)
+   ========================================== */
+@media (max-width: 600px) {
+  .hud {
+    height: 75px;
+  }
+  .screen,
+  .view {
+    min-height: calc(100vh - 75px);
+  }
+  .room {
+    padding-top: 38px;
+  }
+  .puzzle {
+    padding: 22px 15px;
+  }
+  .intro-copy br {
+    display: none;
+  }
+  .portal-grid,
+  .rune-grid {
+    gap: 8px;
+  }
+  .sector-map {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sector-card {
+    min-height: 118px;
+  }
+  .document {
+    padding: 25px 20px;
+  }
+  .document::before {
+    position: static;
+    display: inline-block;
+  }
+}
+
+/* ==========================================
+   11. Cinematic Room Effects
+   ========================================== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  opacity: 0;
+  border: 0 solid #ff3434;
+  box-shadow: inset 0 0 0 transparent;
+  transition: opacity .35s;
+}
+
+body.timer-critical::after {
+  opacity: 1;
+  border-width: 5px;
+  box-shadow: inset 0 0 42px rgba(255, 39, 39, .45);
+  animation: criticalPulse 1.1s ease-in-out infinite;
+}
+
+.hud-orb {
+  display: inline-grid;
+  place-items: center;
+  width: 25px;
+  height: 20px;
+  font-size: 14px;
+  opacity: .25;
+  filter: grayscale(1) drop-shadow(0 0 2px #000);
+  transition: opacity .35s, filter .35s, transform .35s;
+}
+
+.orb-slots {
+  display: grid;
+  grid-template-columns: repeat(6, 25px);
+  gap: 6px;
+  justify-content: end;
+  margin-bottom: 6px;
+}
+
+.hud-orb.collected {
+  opacity: 1;
+  filter: drop-shadow(0 0 7px var(--orb-color));
+}
+
+.hud-orb.orb-arrived {
+  animation: orbArrived .8s ease-out;
+}
+
+.room-scene--water {
+  background: radial-gradient(circle at 50% 110%, rgba(46, 168, 255, .4), transparent 48%),
+              repeating-linear-gradient(0deg, rgba(96, 213, 255, .1) 0 2px, transparent 2px 32px), #071722;
+  animation: waterGlow 4s ease-in-out infinite;
+}
+
+.room-scene--fire {
+  background: radial-gradient(circle at 50% 95%, rgba(255, 59, 48, .55), transparent 42%),
+              linear-gradient(165deg, #35100d, #10090b 66%);
+  animation: fireFlicker 2.4s ease-in-out infinite;
+}
+
+.room-scene--teleport {
+  background: radial-gradient(circle at 50% 48%, rgba(211, 217, 230, .2), transparent 12%),
+              repeating-radial-gradient(circle at 50% 50%, #11151f 0 13px, #252a37 14px 15px, #090b10 17px 30px);
+  animation: spaceShift 7s linear infinite;
+}
+
+.room-scene--wind {
+  background: linear-gradient(135deg, rgba(53, 201, 109, .12), transparent 35%),
+              repeating-linear-gradient(165deg, transparent 0 25px, rgba(139, 255, 185, .11) 26px 28px, transparent 29px 52px), #07150e;
+  animation: windSweep 6s linear infinite;
+}
+
+.room-scene--strength {
+  background: linear-gradient(120deg, transparent 47%, rgba(196, 181, 253, .16) 48% 49%, transparent 50%),
+              linear-gradient(55deg, transparent 53%, rgba(196, 181, 253, .13) 54% 55%, transparent 56%), #171220;
+}
+
+.room-scene--healing {
+  background: radial-gradient(circle at 50% 90%, rgba(255, 111, 181, .35), transparent 45%),
+              repeating-radial-gradient(ellipse at 50% 120%, rgba(134, 255, 190, .12) 0 2px, transparent 3px 26px), #17101b;
+  animation: healingBloom 5s ease-in-out infinite;
+}
+
+.scene-object {
+  animation: objectReveal .55s both;
+}
+
+.scene-object:nth-of-type(2) { animation-delay: .12s; }
+.scene-object:nth-of-type(3) { animation-delay: .24s; }
+
+.success {
+  animation: successEnter .65s both;
+}
+
+.gate-chamber {
+  width: 175px;
+  height: 175px;
+  margin: 4px auto 14px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.gate {
+  position: relative;
+  z-index: 2;
+  font-size: 74px;
+  filter: drop-shadow(0 0 18px #e33b3b);
+  transition: transform .9s ease, filter .9s ease;
+}
+
+.gate-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 75, 75, .55);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(227, 59, 59, .24), inset 0 0 16px rgba(227, 59, 59, .12);
+}
+
+.gate-ring--outer { inset: 0; animation: ringTurn 12s linear infinite; }
+.gate-ring--inner { inset: 28px; border-style: dashed; animation: ringTurn 8s linear infinite reverse; }
+
+.gate-orbs {
+  position: absolute;
+  inset: 0;
+  animation: ringTurn 16s linear infinite;
+}
+
+.gate-orbs span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--orb-color);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .68);
+  box-shadow: 0 0 12px var(--orb-color);
+  transform: rotate(calc(var(--i) * 60deg)) translateY(-77px) rotate(calc(var(--i) * -60deg)) translate(-50%, -50%);
+}
+
+.gate-orbs span:nth-child(1) { --i: 0; }
+.gate-orbs span:nth-child(2) { --i: 1; }
+.gate-orbs span:nth-child(3) { --i: 2; }
+.gate-orbs span:nth-child(4) { --i: 3; }
+.gate-orbs span:nth-child(5) { --i: 4; }
+.gate-orbs span:nth-child(6) { --i: 5; }
+
+.gate-opening .gate-ring,
+.gate-opening .gate-orbs { animation-duration: .75s; }
+.gate-opening .gate { transform: scale(1.32); filter: drop-shadow(0 0 42px #fff); }
+.gate-opening .gate-chamber::after {
+  content: "";
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 80px 34px #ffefc7;
+  animation: gateFlash 1.1s ease-out both;
+}
+
+.orb-flight {
+  position: fixed;
+  z-index: 310;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--orb-color);
+  border-radius: 50%;
+  background: rgba(3, 5, 9, .9);
+  box-shadow: 0 0 24px var(--orb-color);
+  font-size: 27px;
+  pointer-events: none;
+}
+
+@keyframes waterGlow { 50% { filter: brightness(1.22); } }
+@keyframes fireFlicker { 50% { filter: brightness(1.27) saturate(1.25); } }
+@keyframes spaceShift { to { background-position: 0 0, 0 0, 60px 60px; } }
+@keyframes windSweep { to { background-position: 0 0, 150px 0, 0 0; } }
+@keyframes healingBloom { 50% { filter: brightness(1.28) saturate(1.14); } }
+@keyframes objectReveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes successEnter { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
+@keyframes orbArrived { 50% { transform: scale(1.55); } }
+@keyframes criticalPulse { 50% { opacity: .48; } }
+@keyframes ringTurn { to { transform: rotate(360deg); } }
+@keyframes gateFlash { from { opacity: 0; transform: scale(.2); } 45% { opacity: 1; transform: scale(4); } to { opacity: 0; transform: scale(6); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
