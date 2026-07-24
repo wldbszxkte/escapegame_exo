@@ -250,7 +250,7 @@ function puzzle() {
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectFire(0)">🔍 <b>방치된 공구 상자</b><br><small style="color:#aaa; font-size:11px;">찬열이 작업할 때 쓰던 녹슨 철제함</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectFire(1)">🔍 <b>식어버린 화로 벽면</b><br><small style="color:#aaa; font-size:11px;">불꽃의 열기가 멈춘 어두운 벽</small></button>
-      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('fire')">🔒 <b>불꽃 동력 장치</b><br><small style="color:#aaa; font-size:11px;">화염을 되살릴 암호 점화 패드</small></button>
+      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('fire')">🔒 <b>불꽃 동력 장치</b><br><small style="color:#aaa; font-size:11px;">화염을 되살릴 암호 숫자 패드</small></button>
     `) + `<p id="status" class="status"></p></div>`;
   }
 
@@ -259,7 +259,7 @@ function puzzle() {
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectTeleport(0)">🔍 <b>미로 구슬 장치</b><br><small style="color:#aaa; font-size:11px;">시공간의 좌표가 뒤틀린 차원의 틀</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectTeleport(1)">🔍 <b>카이의 세계관 기록집</b><br><small style="color:#aaa; font-size:11px;">공간 이동의 흔적이 적힌 서적</small></button>
-      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('teleport')">🔒 <b>차원문 제어반</b><br><small style="color:#aaa; font-size:11px;">포탈을 고정할 키워드 입력기</small></button>
+      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('teleport')">🔒 <b>차원문 제어반</b><br><small style="color:#aaa; font-size:11px;">포탈을 고정할 키워드 입력기. 한글로 작성하여라.</small></button>
     `) + `<p id="status" class="status"></p></div>`;
   }
 
@@ -268,7 +268,7 @@ function puzzle() {
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectWind(0)">🔍 <b>작업대 선반</b><br><small style="color:#aaa; font-size:11px;">세훈의 바람 선풍 스패너와 일지</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectWind(1)">🔍 <b>밀폐 환풍구</b><br><small style="color:#aaa; font-size:11px;">붉은 안개가 소용돌이치는 해치</small></button>
-      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('wind')">🔒 <b>풍향 제어 스위치</b><br><small style="color:#aaa; font-size:11px;">기류를 정상화할 키워드 패드</small></button>
+      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('wind')">🔒 <b>풍향 제어 스위치</b><br><small style="color:#aaa; font-size:11px;">기류를 정상화할 영문 키워드 패드</small></button>
     `) + `<p id="status" class="status"></p></div>`;
   }
 
@@ -287,7 +287,7 @@ function puzzle() {
   return top + scene(`
     <button class="scene-object" style="left:8%;top:20%" onclick="inspectHealing(0)">🔍 <b>심장부 고대 벽화</b><br><small style="color:#aaa; font-size:11px;">유니콘 상징 옆에 새겨진 4글자 암호</small></button>
     <button class="scene-object" style="right:8%;top:20%" onclick="inspectHealing(1)">🔍 <b>벽화 옆 레이의 문양</b><br><small style="color:#aaa; font-size:11px;">치유의 빛을 이끄는 해독 열쇠말</small></button>
-    <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('healing')">🔒 <b>치유의 코어 게이트</b><br><small style="color:#aaa; font-size:11px;">최종 초능력 복구 메인 시스템</small></button>
+    <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('healing')">🔒 <b>치유의 코어 게이트</b><br><small style="color:#aaa; font-size:11px;">최종 초능력 복구 알파벳 시스템</small></button>
   `) + `<p id="status" class="status"></p></div>`;
 }
 
