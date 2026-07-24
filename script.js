@@ -1,10 +1,10 @@
 const rooms = [
-  { name: '물의 방', member: 'SUHO', icon: '💧', color: '#2ea8ff', rgb: '46,168,255', code: '3', intro: '정화의 시작', orb: '수호의 수룡 원석' },
-  { name: '불의 방', member: 'CHANYEOL', icon: '🔥', color: '#ff3b30', rgb: '255,59,48', code: '0', intro: '꺼진 불꽃', orb: '찬열의 불꽃 원석' },
-  { name: '순간이동의 방', member: 'KAI', icon: '🛸', color: '#9ca3af', rgb: '156,163,175', code: '0', intro: '뒤틀린 공간', orb: '카이의 공간 원석' },
-  { name: '바람의 방', member: 'SEHUN', icon: '🌀', color: '#35c96d', rgb: '53,201,109', code: '2', intro: '붉은 안개', orb: '세훈의 바람 원석' },
-  { name: '힘의 방', member: 'D.O.', icon: '✊', color: '#8b5cf6', rgb: '139,92,246', code: '9', intro: '파쇄의 벽', orb: 'D.O.의 대지 원석' },
-  { name: '치유의 방', member: 'LAY', icon: '🌿', color: '#ff6fb5', rgb: '255,111,181', code: '5', intro: '생명력의 완치', orb: '레이의 치유 원석' }
+  { name: '물의 방', member: 'SUHO', icon: '💧', color: '#2ea8ff', rgb: '46,168,255', code: '3', intro: '정화의 시작', orb: '수호의 수룡 원석', nextStory: "정화된 물줄기가 불의 방으로 흘러가며, 뜨겁게 타오르던 열기를 가라앉힌다."},
+  { name: '불의 방', member: 'CHANYEOL', icon: '🔥', color: '#ff3b30', rgb: '255,59,48', code: '0', intro: '꺼진 불꽃', orb: '찬열의 불꽃 원석', nextStory: "타오르는 불꽃이 차원의 균열을 비추자, 닫혀있던 공간의 문이 흔들리기 시작한다." },
+  { name: '순간이동의 방', member: 'KAI', icon: '🛸', color: '#9ca3af', rgb: '156,163,175', code: '0', intro: '뒤틀린 공간', orb: '카이의 공간 원석', nextStory: "열린 차원문 사이로 강한 바람이 불어와, 굳게 닫혔던 바람의 통로를 두드린다." },
+  { name: '바람의 방', member: 'SEHUN', icon: '🌀', color: '#35c96d', rgb: '53,201,109', code: '2', intro: '붉은 안개', orb: '세훈의 바람 원석', nextStory: "안개가 걷히자 드러난 벽면 뒤로, 굳게 막혀있던 힘의 방 통로가 모습을 드러낸다." },
+  { name: '힘의 방', member: 'D.O.', icon: '✊', color: '#8b5cf6', rgb: '139,92,246', code: '9', intro: '파쇄의 벽', orb: 'D.O.의 대지 원석', nextStory: "무너진 벽 너머, 상처 입은 아지트의 핵심 제어실이 모습을 드러낸다. 마지막 치유만이 남았다." },
+  { name: '치유의 방', member: 'LAY', icon: '🌿', color: '#ff6fb5', rgb: '255,111,181', code: '5', intro: '생명력의 완치', orb: '레이의 치유 원석',nextStory: "정화된 치유의 빛이 온 공간을 감싸자, 봉인되었던 차원의 게이트가 굉음과 함께 열리기 시작한다." } 
 ];
 
 const ITEMS = {
