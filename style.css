@@ -706,26 +706,26 @@ button {
     display: inline-block;
   }
    /* 모바일: 방 안의 조사 칸 3개를 세로로 배치 */
-  .room-scene {
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    padding: 46px 14px 78px;
+   .room-scene {
+    min-height: auto !important; /* 내부 요소 높이에 맞게 가변 */
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 40px 14px 40px !important;
   }
 
-  .scene-object {
+  .room-scene .scene-object {
     position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-
-    width: 100%;
-    min-height: 58px;
-    padding: 10px 12px;
-  }  
+    inset: auto !important; /* top, right, bottom, left 일괄 초기화 */
+    transform: none !important; /* 절대 좌표 변형 제거 */
+    width: 100% !important;
+    min-height: 60px;
+    padding: 12px 14px;
+    box-sizing: border-box !important;
+  }
 }
 
 /* ==========================================
