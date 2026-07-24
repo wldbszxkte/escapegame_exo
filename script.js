@@ -594,7 +594,7 @@ async function clear() {
         </p>
       </div>
 
-      <p>에너지 서명 <b>${r.code}</b>가 성공적으로 전송되었습니다.</p>
+      <p>에너지 서명 <b>${r.code}</b>이 성공적으로 전송되었습니다.</p>
       <div class="code-reveal">CODE ${r.code}</div>
       <button class="primary-button" onclick="next()">${room === 5 ? '메인 게이트로' : '다음 방으로'} <span>→</span></button>
     </section>`;
@@ -689,7 +689,7 @@ function showEnding() {
         <p style="line-height:1.9; max-width:620px; margin:20px auto; color:#e0e4f0; font-size:15px; text-align:center;">
           여섯 개의 원석이 차례로 찬란하게 빛을 발하기 시작했다.<br>
           ( 💧 물 ➔ 🔥 불 ➔ 🛸 순간이동 ➔ 🌀 바람 ➔ ✊ 힘 ➔ 🌿 치유 )<br><br>
-          아지트를 집어삼키던 붉은 기운이 걷히며 개기일식의 구름이 지나간다.<br><br>
+          아지트를 집어삼키던 붉은 기운이 걷히며 개기일식의 구름이 지나간다.<br>앞으로도 몇번의 개기일식이 있더라도, EXO를 사랑하는 마음은 변하지 않기를.<br><br>
           <b style="font-size:18px; color:#8fffc3;">"당신 덕분에 EXO의 힘이 완전히 복구되었다—탈출 성공!"</b>
         </p>
 
