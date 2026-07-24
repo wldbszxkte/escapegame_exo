@@ -20,7 +20,7 @@ let roomState = {};
 let gateOpening = false;
 
 // ⏱️ 붉은 기운 확산 타이머 (10분 = 600초)
-let timeLeft = 600;
+let timeLeft = 1800;
 let timerInterval = null;
 
 // 💎 수집한 초능력 원석들
@@ -145,7 +145,7 @@ function restartGame() {
   collectedOrbs = [];
   inventory = [];
   selectedItem = null;
-  timeLeft = 600;
+  timeLeft = 1800;
   gateOpening = false;
   document.body.classList.remove('timer-critical');
   roomState = { inGame: false };
