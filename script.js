@@ -250,7 +250,7 @@ function puzzle() {
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectFire(0)">🔍 <b>방치된 공구 상자</b><br><small style="color:#aaa; font-size:11px;">찬열이 작업할 때 쓰던 녹슨 철제함</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectFire(1)">🔍 <b>식어버린 화로 벽면</b><br><small style="color:#aaa; font-size:11px;">불꽃의 열기가 멈춘 어두운 벽</small></button>
-      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('fire')">🔒 <b>불꽃 동력 장치</b><br><small style="color:#aaa; font-size:11px;">화염을 되살릴 암호 숫자 패드</small></button>
+      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('fire')">🔒 <b>불꽃 동력 장치</b><br><small style="color:#aaa; font-size:11px;">화염을 되살릴 알파벳 암호 패드</small></button>
     `) + `<p id="status" class="status"></p></div>`;
   }
 
