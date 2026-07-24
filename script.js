@@ -325,7 +325,7 @@ function inspectFire(id) {
   if (id === 0) {
     if (!inventory.includes('torch') && !roomState.torchUsed) {
       getItem('torch');
-      showStoryModal('📦 방치된 공구 상자', '<p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.</p>');
+      showStoryModal('📦 방치된 공구 상자', '<p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.<br>벽면을 비추고 숫자를 살펴볼까? 앗, 숫자를 보고 영어를 떠올려보자!</p>');
     } else status('상자 안은 비어 있다.');
   } else {
     if (selectedItem === 'torch' || roomState.torchUsed) {
@@ -335,7 +335,8 @@ function inspectFire(id) {
           <p style="color:#aaa; font-size:14px; margin-bottom:10px;">
             222 : TWO<br>
             4973 : FIVE<br>
-            3495 : TONE
+            3495 : TONE<br>
+            ⁙숫자의 크기보다 자리수에 집중해보세요.
           </p>
           <hr style="border-color:#441111; margin:12px 0;">
           <p style="font-size:24px; color:#ff3b30; letter-spacing:6px; margin:0;">
