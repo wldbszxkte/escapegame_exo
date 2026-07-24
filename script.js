@@ -302,7 +302,7 @@ function inspectWater(id) {
           • 중단 수면 속에 침전된 수치: <b>21</b><br>
           • 바닥 침전물 사이에 음각된 수치: <b>19</b>
         </p>
-        <p style="color:#aaa; font-size:13px;">세 유리관에 잔류한 수치 기호들이 수문 제어와 연동되어 있는 듯하다.</p>
+        <p style="color:#aaa; font-size:13px;">세 유리관에 잔류한 수치 기호들이 수문 제어와 연동되어 있는 듯하다.<br> 답은 총 3자리이다.</p>
       </div>
     `);
   } else {
