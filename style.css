@@ -705,6 +705,27 @@ button {
     position: static;
     display: inline-block;
   }
+   /* 모바일: 방 안의 조사 칸 3개를 세로로 배치 */
+  .room-scene {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 46px 14px 78px;
+  }
+
+  .scene-object {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    width: 100%;
+    min-height: 58px;
+    padding: 10px 12px;
+  }  
 }
 
 /* ==========================================
