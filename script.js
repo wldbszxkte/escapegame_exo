@@ -481,6 +481,14 @@ function inspectHealing(id) {
     showStoryModal('📜 심장부 고대 벽화', `
       <p>빛을 잃어가는 치유의 유니콘 벽화 중앙에 4글자의 암호문이 뚜렷하게 각인되어 있다.</p>
       <p style="text-align:center; font-size:28px; color:#ff6fb5; letter-spacing:8px; margin:15px 0;"><b>N O P P</b></p>
+      <div style="padding:10px; line-height:1.8; font-style:italic; color:#e0e4f0;">
+        <p>"무사히 여기까지 도착해 줘서 고마워.</p>
+        <p>폭주하는 코어를 막아섰지만, 붉은 기운이 너무 강해 내 치유 원석마저 빛을 잃고 말았어.</p>
+        <p>하지만 난 믿고 있었어. 밖에서 물과 불, 차원과 바람을 뚫고 걸어오는 당신이 있다는 걸.</p>
+        <p><b style="color:#ff6fb5;">이제 마지막 하나야. 빛을 잃은 원석에 다시 치유의 생명력을 불어넣어 줘.</b><br>
+        코어가 정화되는 순간, 아지트의 메인 게이트가 열릴 거야."</p>
+        <p style="text-align:right; color:#ff6fb5; font-weight:bold; margin-top:10px;">— LAY</p>
+      </div>
     `);
   } else {
     showStoryModal('🌿 레이의 치유 문양', `
