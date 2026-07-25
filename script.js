@@ -297,7 +297,7 @@ function puzzle() {
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectTeleport(0)">🔍 <b>미로 구슬 장치</b><br><small style="color:#aaa; font-size:11px;">시공간의 좌표가 뒤틀린 차원의 틀</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectTeleport(1)">🔍 <b>카이의 세계관 기록집</b><br><small style="color:#aaa; font-size:11px;">공간 이동의 흔적이 적힌 서적</small></button>
-      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('teleport')">🔒 <b>차원문 제어반</b><br><small style="color:#aaa; font-size:11px;">포탈을 고정할 키워드 입력기. 한글로 작성하여라.</small></button>
+      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('teleport')">🔒 <b>차원문 제어반</b><br><small style="color:#aaa; font-size:11px;">포탈을 고정할 키워드 입력기. <br>우리가 같은 나라에 태어나서 같은 언어로 말을 해서 참 다행이지 않니?.</small></button>
     `) + `<p id="status" class="status"></p></div>`;
   }
 
@@ -447,7 +447,16 @@ function inspectStrength(id) {
   if (id === 0) {
     if (!inventory.includes('chisel') && !roomState.rockBroken) {
       getItem('chisel');
-      showStoryModal('🔨 파쇄 도구 상자', '<p>[강철 정 🔨]을 획득했다!<br><br>[D.O.의 작업 메모]<br>붉은 기운이 내부 결계를 돌처럼 굳혀 버렸어.<br>맨손으로는 절대 부술 수 없으니 도구를 활용해.</p>');
+      showStoryModal('🔨 파쇄 도구 상자', '<p>[강철 정 🔨]을 획득했다!</p>
+                     <hr style="border-color:#333; margin:12px 0;">
+                     <p style="color:#c4b5fd; font-style:italic;">
+                       "붉은 기운이 코어실 앞의 결계를 돌처럼 단단하게 굳혀버렸다.<br>
+                        내 모든 힘을 실어 내려쳤지만 미세한 균열만 남았어. 맨손으로는 결코 부술 수 없다.<br><br>
+                        이 강철 정으로 내가 남긴 균열을 따라 강하게 공명시켜라. 가장 처음 시작된 충격의 파동을 찾는 순간, 최후의 결계는 무너질 것이다."
+                      </p>
+                      <p style="text-align:right; color:#c4b5fd; font-weight:bold; margin-top:10px;">— D.O.</p>
+        </div>
+      `);
     } else status('상자는 비어 있다.');
   } else {
     if (selectedItem === 'chisel' || roomState.rockBroken) {
