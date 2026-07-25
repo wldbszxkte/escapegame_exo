@@ -206,8 +206,9 @@ function showLetterModal() {
 
       <div style="color: #d0d4e0; font-size: 14px; line-height: 1.8; word-break: keep-all; font-style: italic; margin-bottom: 24px;">
         "이 글을 읽고 있다면, 붉은 기운이 이미 아지트를 완전히 삼켰다는 뜻이겠지.<br><br>
-        EXO의 힘을 가진 우리는 이미 오염되어 직접 원석에 접근할 수 없다. 오직 외부에서 온 당신만이 이 봉인을 풀 수 있어.<br><br>
-        우리는 코어가 있는 가장 깊은 곳으로 먼저 들어간다. 
+        지금 아지트 내부의 모든 제어장치는 차단 되었고, 코어실로향하는 통로들은 각 초능력 구역의 봉인뒤로 굳게 잠겨버렸어.<br><br> 
+        EXO의 힘을 가진 우리는 이미 오염되어 직접 원석에 접근할 수 없어. 오직 외부에서 온 당신만이 이 봉인을 풀 수 있어.<br><br>
+        우리는 결계가 무너지기 전, 코어가 있는 가장 깊은 곳으로 먼저 들어간다. 
         붉은 기운을 정화하고 동력을 되살려 우리를 따라와 줘.<br><br>
         여섯 초능력의 흐름을 차례로 이어준다면, 코어실의 최후 게이트 앞에서 다시 만날 수 있을 거야."
       </div>
@@ -362,7 +363,7 @@ function inspectFire(id) {
   if (id === 0) {
     if (!inventory.includes('torch') && !roomState.torchUsed) {
       getItem('torch');
-      showStoryModal('📦 방치된 공구 상자', '<p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.<br>메모 한 장이 끼워져 있다.<br> "화로 벽에 예비 점화 코드를 숨겨두었어. 불빛이 아니라 빛으로 확인해."<br>- CHANYEOL</p>');
+      showStoryModal('📦 방치된 공구 상자', '<p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.<br><br>메모 한 장이 끼워져 있다.<br> "화로 벽에 예비 점화 코드를 숨겨두었어. 불빛이 아니라 빛으로 확인해."<br>- CHANYEOL</p>');
     } else status('상자 안은 비어 있다.');
   } else {
     if (selectedItem === 'torch' || roomState.torchUsed) {
@@ -415,7 +416,7 @@ function inspectWind(id) {
   if (id === 0) {
     if (!inventory.includes('fanKey') && !roomState.windCleared) {
       getItem('fanKey');
-      showStoryModal('🔧 작업대 선반', '<p>기름때 묻은 선반 구석에서 [환풍구 스패너 🔧]를 발견했다.<br><br>[세훈의 관찰일지><br>붉은 안개가 내부 깊은 곳까지 침식해 들어오고 있다.<br>코어실의 문을 열 수 있는건, 오직 시공간을 가르는 바람 뿐이다.<br>바람의 흐름을 되살려 짙은 안개를 거두어내야해.</p>');
+      showStoryModal('🔧 작업대 선반', '<p>기름때 묻은 선반 구석에서 [환풍구 스패너 🔧]를 발견했다.<br><br>[세훈의 관찰일지]<br>붉은 안개가 내부 깊은 곳까지 침식해 들어오고 있다.<br>코어실의 문을 열 수 있는건, 오직 시공간을 가르는 바람 뿐이다.<br>바람의 흐름을 되살려 짙은 안개를 거두어내야해.</p>');
     } else status('선반엔 더 이상 아무것도 없다.');
   } else {
     if (selectedItem === 'fanKey' || roomState.windCleared) {
@@ -446,7 +447,7 @@ function inspectStrength(id) {
   if (id === 0) {
     if (!inventory.includes('chisel') && !roomState.rockBroken) {
       getItem('chisel');
-      showStoryModal('🔨 파쇄 도구 상자', '<p>[강철 정 🔨]을 획득했다!<br>[D.O.의 작업 메모]<br>붉은 기운이 내부 결계를 돌처럼 굳혀 버렸어.<br>맨손으로는 절대 부술 수 없어.</p>');
+      showStoryModal('🔨 파쇄 도구 상자', '<p>[강철 정 🔨]을 획득했다!<br><br>[D.O.의 작업 메모]<br>붉은 기운이 내부 결계를 돌처럼 굳혀 버렸어.<br>맨손으로는 절대 부술 수 없으니 도구를 활용해.</p>');
     } else status('상자는 비어 있다.');
   } else {
     if (selectedItem === 'chisel' || roomState.rockBroken) {
@@ -690,7 +691,7 @@ function finalRoom() {
           ✨ RESONATING ORB INSCRIPTION
         </span>
         <p style="margin: 0; color: #fff; font-size: 14px; line-height: 1.6; word-break: keep-all; font-weight: 500;">
-          "흩어졌던 우리가 하나로 모였을 때,<br>그 어떤 개기일식의 어둠도 우리를 가릴 수 없다."
+          "흩어졌던 우리가 하나로 모였을 때,<br>그 어떤 개기일식의 어둠도 우리를 가릴 수 없어."
         </p>
       </div>
       <p style="color:#ff3b30; font-weight:bold; margin-bottom:10px;">
