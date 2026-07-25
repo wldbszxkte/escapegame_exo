@@ -371,10 +371,17 @@ function inspectWater(id) {
 // [불의 방] 
 function inspectFire(id) {
   if (id === 0) {
-    if (!inventory.includes('torch') && !roomState.torchUsed) {
+    if (!inventory.includes('torch')) {
       getItem('torch');
-      showStoryModal('📦 방치된 공구 상자', '<p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.<br><br>메모 한 장이 끼워져 있다.<br> "화로 벽에 예비 점화 코드를 숨겨두었어. 불빛이 아니라 빛으로 확인해."<br>- CHANYEOL</p>');
-    } else status('상자 안은 비어 있다.');
+    }
+    showStoryModal('📦 방치된 공구 상자', `
+      <p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.</p>
+      <hr style="border-color:#333; margin:12px 0;">
+      <p style="color:#ff3b30; font-style:italic;">
+        "화로 벽에 예비 점화 코드를 숨겨두었어. 불빛이 아니라 빛으로 확인해."
+      </p>
+      <p style="text-align:right; color:#ff3b30; font-weight:bold; margin-top:10px;">— CHANYEOL</p>
+    `);
   } else {
     if (selectedItem === 'torch' || roomState.torchUsed) {
       roomState.torchUsed = true;
@@ -424,10 +431,19 @@ function inspectTeleport(id) {
 // [바람의 방] - 시저 암호 (-3)
 function inspectWind(id) {
   if (id === 0) {
-    if (!inventory.includes('fanKey') && !roomState.windCleared) {
+    if (!inventory.includes('fanKey')) {
       getItem('fanKey');
-      showStoryModal('🔧 작업대 선반', '<p>기름때 묻은 선반 구석에서 [환풍구 스패너 🔧]를 발견했다.<br><br>[세훈의 관찰일지]<br>붉은 안개가 내부 깊은 곳까지 침식해 들어오고 있다.<br>코어실의 문을 열 수 있는건, 오직 시공간을 가르는 바람 뿐이다.<br>바람의 흐름을 되살려 짙은 안개를 거두어내야해.</p>');
-    } else status('선반엔 더 이상 아무것도 없다.');
+    }
+      showStoryModal('🔧 작업대 선반', `
+      <p>기름때 묻은 선반 구석에서 [환풍구 스패너 🔧]를 발견했다.</p>
+      <hr style="border-color:#333; margin:12px 0;">
+      <p style="color:#35c96d; font-style:italic;">
+        <b>[세훈의 관찰일지]</b><br>
+        붉은 안개가 내부 깊은 곳까지 침식해 들어오고 있다.<br>
+        코어실의 문을 열 수 있는건, 오직 시공간을 가르는 바람 뿐이다.<br>
+        바람의 흐름을 되살려 짙은 안개를 거두어내야해.
+      </p>
+    `);
   } else {
     if (selectedItem === 'fanKey' || roomState.windCleared) {
       roomState.windCleared = true;
@@ -455,8 +471,9 @@ function inspectWind(id) {
 // [힘의 방]
 function inspectStrength(id) {
   if (id === 0) {
-    if (!inventory.includes('chisel') && !roomState.rockBroken) {
+    if (!inventory.includes('chisel')) {
       getItem('chisel');
+    }
       showStoryModal('🔨 파쇄 도구 상자', `
         <p>[강철 정 🔨]을 획득했다!</p>
         <hr style="border-color:#333; margin:12px 0;">
@@ -467,7 +484,6 @@ function inspectStrength(id) {
         </p>
         <p style="text-align:right; color:#c4b5fd; font-weight:bold; margin-top:10px;">— D.O.</p>
       `);
-    } else status('상자는 비어 있다.');
   } else {
     if (selectedItem === 'chisel' || roomState.rockBroken) {
       roomState.rockBroken = true;
