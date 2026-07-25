@@ -778,7 +778,7 @@ function showEnding() {
       <p class="eyebrow" style="color:#8fffc3; letter-spacing:2px;">ECLIPSE ENDED // MISSION COMPLETE</p>
       <h2 style="font-size:32px; margin:10px 0 20px;">빛을 찾은 아지트: WE ARE ONE</h2>
 
-      <!-- 🏆 클리어 스탯 카드 -->
+      <!-- 클리어 스탯 카드 -->
       <div style="display:flex; justify-content:center; gap:15px; max-width:480px; margin:0 auto 20px;">
         <div style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(143,255,195,0.3); padding:12px; border-radius:6px;">
           <span style="font-size:11px; color:#aaa; display:block;">⏱️ 남은 정화 시간</span>
@@ -786,11 +786,11 @@ function showEnding() {
         </div>
         <div style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(143,255,195,0.3); padding:12px; border-radius:6px;">
           <span style="font-size:11px; color:#aaa; display:block;">🎖️ 부여된 칭호</span>
-          <b style="font-size:16px; color:#fff;">EXO-L</b>
+          <b style="font-size:18px; color:#ff6fb5; text-shadow:0 0 10px rgba(255,111,181,0.5);">EXO-L</b>
         </div>
       </div>
 
-      <!-- 💎 6개 원석 정화 연출 -->
+      <!-- 6개 원석 정화 연출 -->
       <div style="display:flex; justify-content:center; gap:8px; margin-bottom:25px;">
         ${rooms.map(r => `
           <div style="width:40px; height:40px; border-radius:50%; background:rgba(0,0,0,0.5); border:2px solid ${r.color}; display:grid; place-items:center; font-size:18px; box-shadow:0 0 12px ${r.color};" title="${r.name}">
@@ -799,7 +799,7 @@ function showEnding() {
         `).join('')}
       </div>
 
-      <!-- 💬 멤버들의 감동 메시지 카드 -->
+      <!-- 메시지 카드 -->
       <div style="background:rgba(15, 17, 26, 0.85); border-left:4px solid #8fffc3; padding:20px; max-width:520px; margin:0 auto 25px; text-align:left; line-height:1.85; font-size:13.5px; color:#e0e4f0;">
         <p style="margin:0 0 10px; color:#8fffc3; font-weight:bold; font-size:14px;">✉️ 코어실 게이트 너머에서 들려온 목소리</p>
         <p style="margin:0; font-style:italic;">
