@@ -442,7 +442,7 @@ function inspectHealing(id) {
   if (id === 0) {
     showStoryModal('📜 심장부 고대 벽화', `
       <p>빛을 잃어가는 치유의 유니콘 벽화 중앙에 4글자의 암호문이 뚜렷하게 각인되어 있다.</p>
-      <p style="text-align:center; font-size:28px; color:#ff6fb5; letter-spacing:8px; margin:15px 0;"><b>N U P P</b></p>
+      <p style="text-align:center; font-size:28px; color:#ff6fb5; letter-spacing:8px; margin:15px 0;"><b>N O P P</b></p>
     `);
   } else {
     showStoryModal('🌿 레이의 치유 문양', `
@@ -451,8 +451,8 @@ function inspectHealing(id) {
         <hr style="border-color:#333; margin:10px 0;">
         <p style="color:#d0d4e0; font-size:13px;">
           <b>[비즈네르 복호화 힌트]</b><br>
-          암호문(NUPP)의 알파벳 순번에서 열쇠말(LAY)의 알파벳 순번을 순서대로 빼면 치유의 코드가 도출됩니다.<br>
-          열쇠말이 부족한 경우 반복하세요.
+          암호문(NOPP)의 알파벳 순번에서 열쇠말(LAY)의 알파벳 순번을 순서대로 빼면 치유의 코드가 도출됩니다.<br>
+          열쇠말이 부족한 경우 반복하세요.(알파벳의 순서는 0-25까지로 사용하세요.)
           (※ 음수일 경우 26을 더해서 계산하세요.)
         </p>
       </div>
@@ -483,8 +483,8 @@ function openTypeModal(type) {
     targetAns = "EXO";
   } else if (type === 'healing') {
     title = "🌿 치유의 메인 게이트";
-    guideText = "NUPP를 열쇠말 LAY로 복호화한 4자리 단어를 입력하세요.";
-    targetAns = "CURE";
+    guideText = "NOPP를 열쇠말 LAY로 복호화한 4자리 단어를 입력하세요.";
+    targetAns = "CORE";
   }
 
   showInputModal(title, guideText, targetAns);
