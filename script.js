@@ -303,7 +303,7 @@ function puzzle() {
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectTeleport(0)">🔍 <b>미로 구슬 장치</b><br><small style="color:#aaa; font-size:11px;">시공간의 좌표가 뒤틀린 차원의 틀</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectTeleport(1)">🔍 <b>카이의 세계관 기록집</b><br><small style="color:#aaa; font-size:11px;">공간 이동의 흔적이 적힌 서적</small></button>
-      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('teleport')">🔒 <b>차원문 제어반</b><br><small style="color:#aaa; font-size:11px;">포탈을 고정할 키워드 입력기. <br>우리가 같은 나라에 태어나서 같은 언어로 말을 해서 참 다행이지 않니?.</small></button>
+      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('teleport')">🔒 <b>차원문 제어반</b><br><small style="color:#aaa; font-size:11px;">포탈을 고정할 키워드 입력기. <br>같은 나라에 태어나서 같은 언어로 말을 해서 참 다행이야.</small></button>
     `) + `<p id="status" class="status"></p></div>`;
   }
 
