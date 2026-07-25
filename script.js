@@ -171,7 +171,7 @@ function showBriefing() {
         <p>붉은 기운이 아지트를 삼켜버린 그날 밤, 여섯 초능력 원석이 빛을 잃었다.</p>
         <p>각 구역에 흩어진 단서들을 탐색해 동력을 되살리고 메인 게이트를 해제하라.</p>
 
-        <p style="color:var(--room); font-weight:bold; margin-top:15px;">이 봉인을 풀 수 있는 건 오직 외부에서 온 당신뿐.<br>여섯 개의 방을 차례로 해결하고 암호 코드를 수집하라.</p>
+        <p style="color:var(--room); font-weight:bold; margin-top:15px;">EXO의 힘을 직접 가진 사람은 이미 붉은 기운에 잠식되어 원석에 접근할 수 없다.<br>외부인은 오염의 영향을 받지 않기 때문에 오직 당신만이 봉인을 풀 수 있다.<br>여섯 개의 방을 차례로 해결하고 암호 코드를 수집하라.</p>
         <hr>
         <button class="primary-button" onclick="firstEnter()">아지트 진입 <span>→</span></button>
       </article>
@@ -250,7 +250,7 @@ function puzzle() {
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectFire(0)">🔍 <b>방치된 공구 상자</b><br><small style="color:#aaa; font-size:11px;">찬열이 작업할 때 쓰던 녹슨 철제함</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectFire(1)">🔍 <b>식어버린 화로 벽면</b><br><small style="color:#aaa; font-size:11px;">불꽃의 열기가 멈춘 어두운 벽</small></button>
-      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('fire')">🔒 <b>불꽃 동력 장치</b><br><small style="color:#aaa; font-size:11px;">화염을 되살릴 알파벳 암호 패드</small></button>
+      <button class="scene-object" style="left:38%;bottom:20%" onclick="openTypeModal('fire')">🔒 <b>불꽃 동력 장치</b><br><small style="color:#aaa; font-size:11px;">화염을 되살릴 암호패드.<br>찬열은 점화암호를 항상 영어로 기록했다. </small></button>
     `) + `<p id="status" class="status"></p></div>`;
   }
 
