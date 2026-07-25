@@ -320,12 +320,12 @@ function inspectWater(id) {
   }
 }
 
-// [불의 방] - HERO (8741)
+// [불의 방] 
 function inspectFire(id) {
   if (id === 0) {
     if (!inventory.includes('torch') && !roomState.torchUsed) {
       getItem('torch');
-      showStoryModal('📦 방치된 공구 상자', '<p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.<br>벽면을 비추고 숫자를 살펴볼까? 앗, 숫자를 보고 영어를 떠올려보자!</p>');
+      showStoryModal('📦 방치된 공구 상자', '<p>구석진 철제 상자 속에서 [플래시 라이트 🔦]를 주웠다.<br>메모 한 장이 끼워져 있다.<br> "화로 벽에 예비 점화 코드를 숨겨두었어. 불빛이 아니라 빛으로 확인해."<br>- CHANYEOL</p>');
     } else status('상자 안은 비어 있다.');
   } else {
     if (selectedItem === 'torch' || roomState.torchUsed) {
@@ -355,8 +355,8 @@ function inspectTeleport(id) {
   if (id === 0) {
     showStoryModal('🛸 미로 구슬 장치', `
       <p style="text-align:center; color:#9ca3af; margin:15px 0; font-size:15px;">
-        🌀 카이가 차원을 넘나들던 순간의 잔상이 응축된 구슬 판.<br>
-        작은 균열 하나가 수많은 갈림길로 번져 나가고 있다.<br>
+        차원의 문이 붉은 기운에 뒤틀렸다.<br>
+        공간을 이동해 게이트 내부로 들어왔지만 잘못된 좌표 하나가 구슬에 존재한다.<br>
         구슬의 가장자리에는 네 개의 문장이 희미하게 떠오른다.<br>
         갈라진 세계의 기록은 언제나 시작점에서 서로 다른 결말을 만든다.
       </p>
@@ -378,7 +378,7 @@ function inspectWind(id) {
   if (id === 0) {
     if (!inventory.includes('fanKey') && !roomState.windCleared) {
       getItem('fanKey');
-      showStoryModal('🔧 작업대 선반', '<p>기름때 묻은 선반 구석에서 [환풍구 스패너 🔧]를 발견했다.</p>');
+      showStoryModal('🔧 작업대 선반', '<p>기름때 묻은 선반 구석에서 [환풍구 스패너 🔧]를 발견했다.<br><br>[세훈의 관찰일지><br>붉은 안개가 내부 깊은 곳까지 침식해 들어오고 있다.<br>코어실의 문을 열 수 있는건, 오직 시공간을 가르는 바람 뿐이다.<br>바람의 흐름을 되살려 짙은 안개를 거두어내야해.</p>');
     } else status('선반엔 더 이상 아무것도 없다.');
   } else {
     if (selectedItem === 'fanKey' || roomState.windCleared) {
@@ -409,7 +409,7 @@ function inspectStrength(id) {
   if (id === 0) {
     if (!inventory.includes('chisel') && !roomState.rockBroken) {
       getItem('chisel');
-      showStoryModal('🔨 파쇄 도구 상자', '<p>[강철 정 🔨]을 획득했다!</p>');
+      showStoryModal('🔨 파쇄 도구 상자', '<p>[강철 정 🔨]을 획득했다!<br>[D.O.의 작업 메모]<br>붉은 기운이 내부 결계를 돌처럼 굳혀 버렸어.<br>맨손으로는 절대 부술 수 없어.</p>');
     } else status('상자는 비어 있다.');
   } else {
     if (selectedItem === 'chisel' || roomState.rockBroken) {
