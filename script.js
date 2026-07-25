@@ -769,29 +769,55 @@ function finish() {
 }
 
 function showEnding() {
-    screen.innerHTML = `
-      <section class="view success">
-        <div class="success-icon" style="font-size:72px; text-shadow:0 0 40px #fff;">☀</div>
-        <p class="eyebrow" style="color:#8fffc3;">ECLIPSE ENDED // MISSION COMPLETE</p>
-        <h2 style="font-size:36px; margin:15px 0;">여섯 원석의 빛이 되살아났다!</h2>
-        
-        <p style="line-height:1.9; max-width:620px; margin:20px auto; color:#e0e4f0; font-size:15px; text-align:center;">
-          여섯 개의 원석이 차례로 찬란하게 빛을 발하기 시작했다.<br>
-          ( 💧 물 ➔ 🔥 불 ➔ 🛸 순간이동 ➔ 🌀 바람 ➔ ✊ 힘 ➔ 🌿 치유 )<br><br>
-          아지트를 집어삼키던 붉은 기운이 걷히며 개기일식의 구름이 지나간다.<br>앞으로도 몇번의 개기일식이 있더라도, EXO를 사랑하는 마음은 변하지 않기를.<br><br>
-          <b style="font-size:18px; color:#8fffc3;">"당신 덕분에 EXO의 힘이 완전히 복구되었다—탈출 성공!"</b>
-        </p>
+  const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+  const seconds = (timeLeft % 60).toString().padStart(2, '0');
 
-        <div style="margin:25px auto; padding:18px; background:rgba(255, 255, 255, 0.05); border:1px solid #8fffc3; border-radius:8px; max-width:500px; text-align:center;">
-          <p style="font-size:13px; color:#aaa; margin-bottom:5px;">🌒 Astronomical Archive Information</p>
-          <p style="font-size:15px; color:#fff; margin:0;">
-            한반도에서 관측 가능한 향후 가장 빠른 개기일식 날짜는<br>
-            <strong style="color:#8fffc3; font-size:18px;">2035년 9월 2일 (350902)</strong> 입니다.
-          </p>
+  screen.innerHTML = `
+    <section class="view success" style="padding: 30px 20px;">
+      <div class="success-icon" style="font-size:64px; text-shadow:0 0 30px #8fffc3; margin-bottom:10px;">☀</div>
+      <p class="eyebrow" style="color:#8fffc3; letter-spacing:2px;">ECLIPSE ENDED // MISSION COMPLETE</p>
+      <h2 style="font-size:32px; margin:10px 0 20px;">빛을 찾은 아지트: WE ARE ONE</h2>
+
+      <!-- 🏆 클리어 스탯 카드 -->
+      <div style="display:flex; justify-content:center; gap:15px; max-width:480px; margin:0 auto 20px;">
+        <div style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(143,255,195,0.3); padding:12px; border-radius:6px;">
+          <span style="font-size:11px; color:#aaa; display:block;">⏱️ 남은 정화 시간</span>
+          <b style="font-size:18px; color:#8fffc3;">${minutes}분 ${seconds}초</b>
         </div>
+        <div style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(143,255,195,0.3); padding:12px; border-radius:6px;">
+          <span style="font-size:11px; color:#aaa; display:block;">🎖️ 부여된 칭호</span>
+          <b style="font-size:16px; color:#fff;">아지트의 수호자</b>
+        </div>
+      </div>
 
-        <button class="primary-button" onclick="restartGame()">처음부터 다시하기 <span>↺</span></button>
-      </section>`;
+      <!-- 💎 6개 원석 정화 연출 -->
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:25px;">
+        ${rooms.map(r => `
+          <div style="width:40px; height:40px; border-radius:50%; background:rgba(0,0,0,0.5); border:2px solid ${r.color}; display:grid; place-items:center; font-size:18px; box-shadow:0 0 12px ${r.color};" title="${r.name}">
+            ${r.icon}
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- 💬 멤버들의 감동 메시지 카드 -->
+      <div style="background:rgba(15, 17, 26, 0.85); border-left:4px solid #8fffc3; padding:20px; max-width:520px; margin:0 auto 25px; text-align:left; line-height:1.85; font-size:13.5px; color:#e0e4f0;">
+        <p style="margin:0 0 10px; color:#8fffc3; font-weight:bold; font-size:14px;">✉️ 코어실 게이트 너머에서 들려온 목소리</p>
+        <p style="margin:0; font-style:italic;">
+          "수로가 맑아지고, 식었던 화로에 불꽃이 피어오르던 그 순간부터 우리는 알 수 있었어.<br>
+          비틀린 차원과 붉은 안개를 뚫고 끝까지 포기하지 않고 걸어와 줘서 고마워.<br><br>
+          <b style="color:#fff;">여섯 개의 원석이 하나로 모여 다시 빛나는 한, 앞으로 어떤 어둠이 찾아와도 우린 이겨낼 수 있을 거야.</b><br>
+          지나가는 일식 구름 너머로 다시 빛날 우리를 위해, 앞으로도 항상 함께해 줘."
+        </p>
+        <p style="text-align:right; color:#8fffc3; font-weight:bold; margin:12px 0 0;">— EXO</p>
+      </div>
+
+      <!-- 🌒 천문 정보 -->
+      <p style="color:#888; font-size:12px; margin-bottom:20px;">
+        🌒 한반도 다음 개기일식 예측일: <strong style="color:#aaa;">2035년 9월 2일 (350902)</strong>
+      </p>
+
+      <button class="primary-button" onclick="restartGame()">처음부터 다시하기 <span>↺</span></button>
+    </section>`;
 }
 
 restartGame();
