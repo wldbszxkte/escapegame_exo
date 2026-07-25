@@ -276,6 +276,8 @@ function puzzle() {
 
   // 0: 물의 방 (SUHO)
   if (room === 0) {
+    top += `<h3>"붉은 기운에 오염된 수로로 인해 아지트의 정화 장치가 멈췄다. 맑은 물길을 다시 흐르게 하라."</h3>
+            <p class="puzzle-guide">수질 정화 유리관의 수치와 수호의 일지 단서를 조합하여 수문 암호를 풀어내세요.</p>`;
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectWater(0)">🔍 <b>수질 정화 유리관</b><br><small style="color:#aaa; font-size:11px;">수호의 수룡 기운이 가라앉은 높은 관</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectWater(1)">🔍 <b>수호의 관리 일지</b><br><small style="color:#aaa; font-size:11px;">붉은 오염을 씻어내기 위한 메모</small></button>
@@ -285,6 +287,8 @@ function puzzle() {
 
   // 1: 불의 방 (CHANYEOL)
   if (room === 1) {
+    top += `<h3>"동력원의 화로가 서늘하게 식어버렸다. 차가운 어둠 속에 불꽃의 온기를 다시 피워라."</h3>
+            <p class="puzzle-guide">공구 상자에서 빛을 찾고, 화로 벽면에 드러난 영문 패턴을 해독하여 점화하세요.</p>`;
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectFire(0)">🔍 <b>방치된 공구 상자</b><br><small style="color:#aaa; font-size:11px;">찬열이 작업할 때 쓰던 녹슨 철제함</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectFire(1)">🔍 <b>식어버린 화로 벽면</b><br><small style="color:#aaa; font-size:11px;">불꽃의 열기가 멈춘 어두운 벽</small></button>
@@ -294,6 +298,8 @@ function puzzle() {
 
   // 2: 순간이동의 방 (KAI)
   if (room === 2) {
+    top += `<h3>"차원의 좌표가 비틀려 내부 통로가 가로막혔다. 뒤틀린 공간을 바로잡고 도약하라."</h3>
+            <p class="puzzle-guide">미로 구슬 장치와 공간 기록지를 탐색해 차원문을 고정할 키워드를 찾아내세요.</p>`;
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectTeleport(0)">🔍 <b>미로 구슬 장치</b><br><small style="color:#aaa; font-size:11px;">시공간의 좌표가 뒤틀린 차원의 틀</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectTeleport(1)">🔍 <b>카이의 세계관 기록집</b><br><small style="color:#aaa; font-size:11px;">공간 이동의 흔적이 적힌 서적</small></button>
@@ -303,6 +309,8 @@ function puzzle() {
 
   // 3: 바람의 방 (SEHUN)
   if (room === 3) {
+    top += `<h3>"코어실로 향하는 통로가 짙은 붉은 안개에 잠겼다. 바람을 일으켜 안개를 가라앉혀라."</h3>
+            <p class="puzzle-guide">환풍구를 열어 안개 속에 감춰진 암호를 찾고, 어긋난 시간만큼 신호를 되감으세요.</p>`;
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectWind(0)">🔍 <b>작업대 선반</b><br><small style="color:#aaa; font-size:11px;">세훈의 바람 선풍 스패너와 일지</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectWind(1)">🔍 <b>밀폐 환풍구</b><br><small style="color:#aaa; font-size:11px;">붉은 안개가 소용돌이치는 해치</small></button>
@@ -312,6 +320,8 @@ function puzzle() {
 
   // 4: 힘의 방 (D.O.)
   if (room === 4) {
+    top += `<h3>"최후의 결계가 바위처럼 단단하게 코어실 입구를 막아섰다. 강력한 공명으로 벽을 깨부숴라."</h3>
+            <p class="puzzle-guide">파쇄 정으로 바위를 가르고, 단단한 암벽에 새겨진 충격의 파동 순서를 복원하세요.</p>`;
     return top + scene(`
       <button class="scene-object" style="left:8%;top:20%" onclick="inspectStrength(0)">🔍 <b>파쇄 도구 상자</b><br><small style="color:#aaa; font-size:11px;">디오의 강한 충격을 견디는 강철 정</small></button>
       <button class="scene-object" style="right:8%;top:20%" onclick="inspectStrength(1)">🔍 <b>파쇄의 거대 암벽</b><br><small style="color:#aaa; font-size:11px;">대지의 힘으로 균열이 간 단단한 바위</small></button>
