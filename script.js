@@ -685,6 +685,14 @@ function finalRoom() {
 
       <p style="color:#888; font-size:12px; margin-bottom:20px;">6개의 초능력 원석이 모두 반응합니다.</p>
 
+      <div style="margin: 0 auto 20px; padding: 14px 18px; background: rgba(255, 255, 255, 0.04); border: 1px dashed rgba(255, 255, 255, 0.2); border-radius: 6px; max-width: 480px; text-align: center;">
+        <span style="font-size: 11px; color: #8fffc3; font-family: Orbitron, sans-serif; letter-spacing: 1px; display: block; margin-bottom: 6px;">
+          ✨ RESONATING ORB INSCRIPTION
+        </span>
+        <p style="margin: 0; color: #fff; font-size: 14px; line-height: 1.6; word-break: keep-all; font-weight: 500;">
+          "흩어졌던 우리가 하나로 모였을 때,<br>그 어떤 개기일식의 어둠도 우리를 가릴 수 없다."
+        </p>
+      </div>
       <p style="color:#ff3b30; font-weight:bold; margin-bottom:10px;">
         ⚠️ 수집한 6개의 코드 번호를 초능력을 가진 자들의 나이 순서대로 배치하여 입력하시오.
       </p>
