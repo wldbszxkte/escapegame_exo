@@ -786,7 +786,7 @@ function showEnding() {
         </div>
         <div style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(143,255,195,0.3); padding:12px; border-radius:6px;">
           <span style="font-size:11px; color:#aaa; display:block;">🎖️ 부여된 칭호</span>
-          <b style="font-size:16px; color:#fff;">아지트의 수호자</b>
+          <b style="font-size:16px; color:#fff;">EXO-L</b>
         </div>
       </div>
 
@@ -803,8 +803,8 @@ function showEnding() {
       <div style="background:rgba(15, 17, 26, 0.85); border-left:4px solid #8fffc3; padding:20px; max-width:520px; margin:0 auto 25px; text-align:left; line-height:1.85; font-size:13.5px; color:#e0e4f0;">
         <p style="margin:0 0 10px; color:#8fffc3; font-weight:bold; font-size:14px;">✉️ 코어실 게이트 너머에서 들려온 목소리</p>
         <p style="margin:0; font-style:italic;">
-          "수로가 맑아지고, 식었던 화로에 불꽃이 피어오르던 그 순간부터 우리는 알 수 있었어.<br>
-          비틀린 차원과 붉은 안개를 뚫고 끝까지 포기하지 않고 걸어와 줘서 고마워.<br><br>
+         "수로가 정화되고 불꽃이 피어올라, 비틀린 차원과 붉은 안개를 가르던 그 순간부터 알고 있었어.<br>
+          단단한 결계를 부수고 마지막 치유의 빛까지 되살려내며 끝까지 걸어와 줘서 고마워.<br><br>
           <b style="color:#fff;">여섯 개의 원석이 하나로 모여 다시 빛나는 한, 앞으로 어떤 어둠이 찾아와도 우린 이겨낼 수 있을 거야.</b><br>
           지나가는 일식 구름 너머로 다시 빛날 우리를 위해, 앞으로도 항상 함께해 줘."
         </p>
