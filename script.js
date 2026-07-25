@@ -180,7 +180,44 @@ function showBriefing() {
 
 function firstEnter() {
   startTimer();
-  hub();
+  showLetterModal();
+}
+
+function showLetterModal() {
+  closeModal();
+  const modal = document.createElement('div');
+  modal.id = 'gameModal';
+  modal.style.cssText = `
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(0, 0, 0, 0.92); display: grid; place-items: center; padding: 20px;
+    animation: fadeIn 0.4s ease-out;
+  `;
+  
+  modal.innerHTML = `
+    <div style="width: min(500px, 92%); background: #0f111a; border: 1px solid var(--room); border-top: 4px solid var(--room); padding: 28px 24px; border-radius: 6px; box-shadow: 0 0 40px rgba(0,0,0,0.9); text-align: left; position: relative;">
+      
+      <div style="font-size: 11px; color: var(--room); font-family: Orbitron, sans-serif; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+        <span>✉️</span> URGENT LETTER FROM EXO
+      </div>
+      
+      <h3 style="margin: 0 0 16px; color: #fff; font-size: 18px; border-bottom: 1px dashed rgba(255,255,255,0.15); padding-bottom: 10px;">
+        아지트 입구에 남겨진 긴급 메모
+      </h3>
+
+      <div style="color: #d0d4e0; font-size: 14px; line-height: 1.8; word-break: keep-all; font-style: italic; margin-bottom: 24px;">
+        "이 글을 읽고 있다면, 붉은 기운이 이미 아지트를 완전히 삼켰다는 뜻이겠지.<br><br>
+        EXO의 힘을 가진 우리는 이미 오염되어 직접 원석에 접근할 수 없다. 오직 외부에서 온 당신만이 이 봉인을 풀 수 있어.<br><br>
+        우리는 코어가 있는 가장 깊은 곳으로 먼저 들어간다. 
+        붉은 기운을 정화하고 동력을 되살려 우리를 따라와 줘.<br><br>
+        여섯 초능력의 흐름을 차례로 이어준다면, 코어실의 최후 게이트 앞에서 다시 만날 수 있을 거야."
+      </div>
+
+      <button onclick="closeModal(); hub();" style="width: 100%; padding: 14px; background: var(--room); border: 0; color: #000; font-weight: bold; font-size: 15px; cursor: pointer; border-radius: 3px; transition: transform 0.1s;">
+        편지를 접고 중앙 제어실로 이동 ➔
+      </button>
+    </div>
+  `;
+  document.body.appendChild(modal);
 }
 
 function hub() {
