@@ -457,15 +457,15 @@ function inspectStrength(id) {
   if (id === 0) {
     if (!inventory.includes('chisel') && !roomState.rockBroken) {
       getItem('chisel');
-      showStoryModal('🔨 파쇄 도구 상자', '<p>[강철 정 🔨]을 획득했다!</p>
-                     <hr style="border-color:#333; margin:12px 0;">
-                     <p style="color:#c4b5fd; font-style:italic;">
-                       "붉은 기운이 코어실 앞의 결계를 돌처럼 단단하게 굳혀버렸다.<br>
-                        내 모든 힘을 실어 내려쳤지만 미세한 균열만 남았어. 맨손으로는 결코 부술 수 없다.<br><br>
-                        이 강철 정으로 내가 남긴 균열을 따라 강하게 공명시켜라. 가장 처음 시작된 충격의 파동을 찾는 순간, 최후의 결계는 무너질 것이다."
-                      </p>
-                      <p style="text-align:right; color:#c4b5fd; font-weight:bold; margin-top:10px;">— D.O.</p>
-        </div>
+      showStoryModal('🔨 파쇄 도구 상자', `
+        <p>[강철 정 🔨]을 획득했다!</p>
+        <hr style="border-color:#333; margin:12px 0;">
+        <p style="color:#c4b5fd; font-style:italic;">
+          "붉은 기운이 코어실 앞의 결계를 돌처럼 단단하게 굳혀버렸다.<br>
+          내 모든 힘을 실어 내려쳤지만 미세한 균열만 남았어. 맨손으로는 결코 부술 수 없다.<br><br>
+          이 강철 정으로 내가 남긴 균열을 따라 강하게 공명시켜라. 가장 처음 시작된 충격의 파동을 찾는 순간, 최후의 결계는 무너질 것이다."
+        </p>
+        <p style="text-align:right; color:#c4b5fd; font-weight:bold; margin-top:10px;">— D.O.</p>
       `);
     } else status('상자는 비어 있다.');
   } else {
